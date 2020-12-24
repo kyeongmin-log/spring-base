@@ -66,3 +66,14 @@
 "key2:"value2"
 }
 ```
+
+## IntelliJ 단축키
+- ctrl + shift + enter : 자동완성기능
+
+```
+Hello hello = new Hello(
+//저 상태에서 누르면
+Hello hello = new Hello();
+```
+
+- ctrl + p : 파라메타에 들어갈 수 있는 정보를 보여줌(api에 데이터를 넣을 때 유용함)
