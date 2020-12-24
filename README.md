@@ -34,3 +34,35 @@
 >2. cd build/libs
 >3. java -jar hello-spring-0.0.1-SNAPSHOT.jar
 >4. 실행 확인
+
+## 정적 컨텐츠 동작
+
+![static](./ReadmeImg/static_content.PNG)
+
+- 웹 브라우저에서 내장 톰켓 서버로 요청을 하면 톰켓 서버는 먼저 스프링 컨테이너(현재 controller 폴더) 안을 먼저 찾아본다.
+해당 파일이 없을 경우 resources/static 폴더 안에서 찾아서 그대로 보내주게 된다. (static 폴더 안에서는 확장명까지 정확하게 본다.)
+  
+## mvc, 템플릿 엔진 동작
+
+![mvc](./ReadmeImg/mvc_template.PNG)
+
+- 기본적으로 mvc의 동작을 보여주는 예시이다. 
+  웹브라우저에서 서버에 요청한다. 요청 받은 서버는 controller에서 맵핑된 것이 있는지 찾고 있으면
+  데이터베이스(model)에서 정보를 가져와 서버에서 가공하여 viewResolver(템플릿 엔진)로 보내준다.
+  템플릿 엔진(현재 사용중인 템플릿 엔진은 thymeleaf)은 서버에서 넘어온 데이터를 맞는 자리에 넣어주고 
+  HTML로 변환시켜서 웹 브라우저로 넘겨준다.
+  
+## API 동작
+
+![api](./ReadmeImg/api_action.PNG)
+
+- @ResponseBody : view로 보내는 것이 아니라 해당 데이터를 보낸다. 여러 타입으로 보낼 수 있으며
+객체(오브젝트)는 현재 대부분 JSON 방식으로 넘겨준다.
+  
+- JSON : 키, 값으로 이루어진 오브젝트
+```
+{
+"key":"value",
+"key2:"value2"
+}
+```
