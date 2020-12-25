@@ -77,3 +77,5 @@ Hello hello = new Hello();
 ```
 
 - ctrl + p : 파라메타에 들어갈 수 있는 정보를 보여줌(api에 데이터를 넣을 때 유용함)
+
+- alt + Insert : 클래스, 인터페이스, 패키지, getter or setter 등을 생성할 때 사용
