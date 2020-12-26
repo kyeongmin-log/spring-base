@@ -103,3 +103,16 @@ Hello hello = new Hello();
 - alt + Insert : 클래스, 인터페이스, 패키지, getter or setter 등을 생성할 때 사용
 
 - shift + F6 : rename (== vscode : ctrl + D)
+
+- ctrl + alt + v : return 값 자동 완성
+
+```
+//사용 전
+memberRepository.findByName(member.getName());
+//사용 후
+Optional<Member> byName = memberRepository.findByName(member.getName());
+
+//자주 사용 됨.
+```
+
+- ctrl + alt + shift + T : 소스 리펙토링할 때 사용하는 단축키
