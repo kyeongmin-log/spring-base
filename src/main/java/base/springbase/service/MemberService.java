@@ -9,7 +9,16 @@ import java.util.Optional;
 
 public class MemberService {
     //인터페이스로 선언 구현된 클래스로 인스턴스를 생성
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+    /*
+        해당 객체의 인스턴스가 생기게 되면, 각각의 인스턴스에 값을 저장할 가능성이 있다.
+        (같은 DB를 사용하는 것이 아닌 서로 다른 DB를 사용하고 있다는 것)
+        이를 방지하기 위해 객체를 생성하는 부분을 외부에서 넣어주도록 바꿔준다.
+        이를 DI(Dependency Injection)이라고 한다.
+    */
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     //회원가입
     public Long join(Member member){
@@ -27,7 +36,7 @@ public class MemberService {
         //위처럼 사용할 수 있지만 callback을 이용해서 더 간소화 시킬 수 있다.
         memberRepository.findByName(member.getName())
                 .ifPresent(m -> {
-                    throw new IllegalStateException("이미 존재하는 회웝입니다.");
+                    throw new IllegalStateException("이미 존재하는 회원입니다.");
                 });
     }
 

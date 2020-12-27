@@ -81,6 +81,8 @@
 
 - test 폴더에서 클래스 안에 있는 테스트 할 메서드 위에 @Test를 붙여주면 메서스 실행이 가능하다.
 
+- 메소드 명을 과감하게 한글이름으로 해도 좋다. 우선, 한국 사람끼리 개발하는 곳에서는 영어보다 직관적이며 빌드 시 테스트 코드는 들어가지 않기에 상관없다.
+
 ## TDD(Test-Driven Development)
 
 - 테스트 주도 개발. 먼저 테스크 케이스를 작성해놓고 main을 개발하는 방식
@@ -88,6 +90,38 @@
 - 개발의 역순. 
   - 구현클래스 -> 테스트케이스(X)
   - 테스트케이스 -> 구현클래스(O)
+
+## Optional ifPresent(),get() 메소드
+
+- ifPresent() : 해당 값이 있으면 {} 안의 내용을 실행
+
+```
+//ex
+private final MemberRepository memberRepository = new MemoryMemberRepository();
+
+memberRepository.findByName(member.getName())
+        .ifPresent(m -> {
+        throw new IllegalStateException("이미 존재하는 회웝입니다.");
+        });
+```
+
+- get() : 값이 나옴.
+  
+(단, 바로 꺼내는 걸 권장하진 않고)
+
+- orElseGet() : 꺼낼 값이 없는 경우 default값을 꺼내는 등 다양한 옵션이 있기에 이걸 많이 사용한다.
+
+```
+//ex
+Member result = repository.findById(member.getId()).get();
+```
+
+# Service
+
+- 구현한 기능을 사용한 비즈니스 소스에 가깝다. 고객의 요구사양(or 개발자의 요구사항)을 만족시키기 위해 조건, 반복 등 여러 제어문을 사용하여 구현하게 된다.
+
+- 메소드의 이름을 비즈니스에 가깝게 짜는 것이 좋다. -> 이후에 소스를 수정하는데 있어서 효율적이다.
+  (ex) 회원가입, 전체조회, 선택 조회 등)
 
 ## IntelliJ 단축키
 - ctrl + shift + enter : 자동완성기능
@@ -116,3 +150,7 @@ Optional<Member> byName = memberRepository.findByName(member.getName());
 ```
 
 - ctrl + alt + shift + T : 소스 리펙토링할 때 사용하는 단축키
+
+- ctrl + shift + T : 해당 클래스의 테스트 케이스 생성
+
+- shift + f10 : 이전에 실행했던 거 다시 실행
