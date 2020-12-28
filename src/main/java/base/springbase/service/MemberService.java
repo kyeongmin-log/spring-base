@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+//@Service
 public class MemberService {
     //인터페이스로 선언 구현된 클래스로 인스턴스를 생성
     private final MemberRepository memberRepository;
@@ -22,7 +22,7 @@ public class MemberService {
         (이러면 하나의 인스턴스로 관리할 수 있다. - 싱글톤 패턴)
         이를 DI(Dependency Injection)이라고 한다.
     */
-    @Autowired
+    //@Autowired
     //여기서 보면 MemberService는 MemberRepository를 필요로 하기에(즉, 의존하기에)
     //@Autowired 로 연결시켜 준 모습니다.
     public MemberService(MemberRepository memberRepository) {
