@@ -276,6 +276,13 @@ class MemberServiceIntegrationTest {
 테스트 완료 후에 항상 롤백한다. 이렇게 하면 DB에 데이터가 남지 않으므로 다음 테스트에 영향을 주지
 않는다. (저장을 원하면 @Test 아래에 @Commit 을 붙이면 됌.)
 
+# JDBC Template
+
+- 스프링 JdbcTemplate과 MyBatis 같은 라이브러리는 JDBC API에서 본 반복 코드를 대부분
+제거해준다. 하지만 SQL은 직접 작생해야 한다.
+
+- [라이브러리 API](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/jdbc/core/JdbcTemplate.html#method.detail)
+
 # IntelliJ 단축키
 - ctrl + shift + enter : 자동완성기능
 
