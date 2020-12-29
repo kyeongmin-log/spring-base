@@ -83,6 +83,32 @@
 
 - 메소드 명을 과감하게 한글이름으로 해도 좋다. 우선, 한국 사람끼리 개발하는 곳에서는 영어보다 직관적이며 빌드 시 테스트 코드는 들어가지 않기에 상관없다.
 
+## TestCase given, when, then 구조
+
+테스트 케이스를 작성할 때, 기본적으로 given, when, then 구조에 맞춰서 작성하는 것이 좋다.
+
+- given : 무언가의 상황이 주어지고
+
+- when : 이것(//when 아래의 명령문)을 실행,검증 했을 때
+
+- then : 해당 결과가 나온다.
+
+코드로 보면
+
+```java
+@Test
+void 회원가입() {
+    //given
+    Member member = new Member();
+    member.setName("spring");
+    //when
+    Long saveId = memberService.join(member);
+    //then
+    Member findMember = memberService.findOne(saveId).get();
+    assertThat(findMember.getId()).isEqualTo(member.getId());
+}
+```
+
 # TDD(Test-Driven Development)
 
 - 테스트 주도 개발. 먼저 테스크 케이스를 작성해놓고 main을 개발하는 방식
@@ -232,6 +258,23 @@ public class SpringConfig {
   - 확장에는 열려있고, 수정, 변경에는 닫혀있다.
   
 - 스프링의 DI(Dependencies Injection)을 사용하면 기존 코드를 전혀 손대지 않고, 설정만으로 구현 클래스를 변경할 수 있다.
+
+# 스프링 통합 테스트
+
+```java
+@SpringBootTest
+@Transactional
+class MemberServiceIntegrationTest {
+ @Autowired MemberService memberService;
+ @Autowired MemberRepository memberRepository;
+ ...
+```
+
+- @SpringBootTest : 스프링 컨테이너와 테스트를 함께 실행한다.
+
+- @Transactional : 테스트 케이스에 이 애노테이션이 있으면, 테스트 시작 전에 트랜잭션을 시작하고,
+테스트 완료 후에 항상 롤백한다. 이렇게 하면 DB에 데이터가 남지 않으므로 다음 테스트에 영향을 주지
+않는다. (저장을 원하면 @Test 아래에 @Commit 을 붙이면 됌.)
 
 # IntelliJ 단축키
 - ctrl + shift + enter : 자동완성기능
