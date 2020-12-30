@@ -5,11 +5,13 @@ import base.springbase.repository.MemberRepository;
 import base.springbase.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 //@Service
+@Transactional
 public class MemberService {
     //인터페이스로 선언 구현된 클래스로 인스턴스를 생성
     private final MemberRepository memberRepository;

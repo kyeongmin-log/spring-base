@@ -283,6 +283,24 @@ class MemberServiceIntegrationTest {
 
 - [라이브러리 API](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/jdbc/core/JdbcTemplate.html#method.detail)
 
+# 서비스 계층에 트랜잭션 추가
+
+```java
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+@Transactional
+public class MemberService {
+    private final MemberRepository memberRepository;
+```
+
+- 스프링은 해당 클래스의 메서드를 실행할 때 트랜잭션을 시작하고, 메서드가 정상 종료되면 트랜잭션을
+커밋한다. 만약 런타임 예외가 발생하면 롤백한다.
+
+- JPA를 통한 모든 데이터 변경은 트랜잭션 안에서 실행해야 한다.
+
 # IntelliJ 단축키
 - ctrl + shift + enter : 자동완성기능
 
