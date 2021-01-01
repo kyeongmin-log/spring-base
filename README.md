@@ -316,6 +316,28 @@ JpaRepository 인터페이스로 가보면 기본적으로 CRUD 기능들이 구
 이 조합으로 해결하기 어려운 쿼리는 JPA가 제공하는 네이티브 쿼리를
 사용하거나, 앞서 학습한 스프링 JdbcTemplate를 사용하면 된다
 
+## AOP
+
+- 주요 로직이 아닌 부가적인 로직을 뜻함
+- 모든 메소드의 공통 관심사일 때
+- 예를 들어, 모든 메소드의 호출 시간을 측정하고 싶을 때 사용
+
+### 시간 측정 AOP
+
+![AOP](./ReadmeImg/AOPtime.PNG)
+
+![AOPapply](./ReadmeImg/AOPtime2.PNG)
+
+- 스프링 빈을 사용하면 가상의 빈을 만든 후 다 적용해보고 joinPoint.proceed()를 통해 실제 스프링 빈에 적용한다.
+
+![AOPapplyAll](./ReadmeImg/AOPtime3.PNG)
+
+- AOP를 적용 전과 적용 후의 그림이다. 위와 같이 동작한다.
+
+# 이후 필요한 것
+
+- 각각의 기술들을 얇게 알아봤으니 필요한 기술들을 깊게 파야한다.
+
 # IntelliJ 단축키
 - ctrl + shift + enter : 자동완성기능
 
