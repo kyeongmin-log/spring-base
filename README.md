@@ -283,6 +283,20 @@ class MemberServiceIntegrationTest {
 
 - [라이브러리 API](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/jdbc/core/JdbcTemplate.html#method.detail)
 
+# JPA
+
+- 자바 ORM 기술에 대한 표준 명세로, JAVA에서 제공하는 API이다. 
+
+- ORM이기 때문에 자바 클래스와 DB테이블을 매핑한다.(sql을 매핑하지 않는다)
+
+### JPA Mapping
+
+@Entity: 해당 클래스를 SQL테이블과 매핑한다.
+
+@Table: 앤티티 클래스에 매핑할 테이블 정보를 알려준다. -> 생략할 경우, 클래스이슨을 테이블 이름으로 매핑
+
+매핑 정보가 없을 경우 필드명으로 매핑한다. 데이터베이스가 대소문자를 구분할 경우 name 속성을 사용하여 명식적으로 매핑해야한다.
+
 # 서비스 계층에 트랜잭션 추가
 
 ```java
